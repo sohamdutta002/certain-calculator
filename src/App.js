@@ -68,22 +68,22 @@ import {
     
     function five(e) {
       e.preventDefault()
-      inputRef.current.value+=9
+      inputRef.current.value+=5
     }
     
     function six(e) {
       e.preventDefault()
-      inputRef.current.value+=9
+      inputRef.current.value+=6
     }
   
     function seven(e) {
       e.preventDefault()
-      inputRef.current.value+=9
+      inputRef.current.value+=7
     }
   
     function eight(e) {
       e.preventDefault()
-      inputRef.current.value+=9
+      inputRef.current.value+=8
     }
   
     function nine(e) {
@@ -109,7 +109,7 @@ import {
     }
     function equal(e) {
       e.preventDefault()
-      inputRef.current.value+="."
+      
     }
    
     return ( 
@@ -133,19 +133,25 @@ import {
             <button onClick={divide}>%</button>   
             <button onClick={divide}>/</button>   
           </div>
-          <div className="Btn Row">
+          <div className=" Btn Row">
             <button onClick={seven}>7</button>
             <button onClick={eight}>8</button>
             <button onClick={nine}>9</button>
             <button onClick={times}>*</button>
+          </div>
+          <div className=" Btn Row">
             <button onClick={four}>4</button>
             <button onClick={five}>5</button>
             <button onClick={six}>6</button>
             <button onClick={minus}>-</button> 
+          </div>
+          <div className=" Btn Row">
             <button onClick={one}>1</button>
             <button onClick={two}>2</button>
             <button onClick={three}>3</button>
             <button onClick={plus}>+</button> 
+          </div>
+          <div className="Btn Row">
             <button onClick={alternate}>+/-</button> 
             <button onClick={zero}>0</button>
             <button onClick={point}>.</button>
