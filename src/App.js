@@ -1,6 +1,7 @@
+import {evaluate} from 'mathjs';
 import {
     useState,
-    useRef
+    useRef, useEffect
   } from "react"; 
   import "./App.css";
   
@@ -9,109 +10,127 @@ import {
     const resultRef = useRef(null); 
     const [result, setResult] = useState(0); 
    
+    
+  useEffect(() => {
+    function handleKeyDown(event) {
+        if (event.key === 'Enter') {
+            equal(event);
+        }
+        else if(event.key==='1')
+            one(event);
+        else if(event.key==='2')
+            two(event)
+        else if(event.key==='3')
+            three(event)
+        else if(event.key==='4')
+            four(event)
+        else if(event.key==='5')
+            five(event)
+        else if(event.key==='6')
+            six(event)
+        else if(event.key==='7')
+            seven(event)
+        else if(event.key==='8')
+            eight(event)
+        else if(event.key==='9')
+            nine(event)
+        else if(event.key==='0')
+            zero(event)
+        else if(event.key==='+')
+            plus(event)
+        else if(event.key==='-')
+            minus(event)
+        else if(event.key==='*'||event.key==='x')
+            times(event)
+        else if(event.key==='/')
+            divide(event)
+    }
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
     function plus(e) { 
       e.preventDefault(); 
-      setResult((result) => result + Number(inputRef.current.value)); 
+      if(result===0)
+        resultRef.current.value="";
+      else  
+        setResult((result) => result +"+"+ Number(inputRef.current.value));
+      inputRef.current.value="" 
     }; 
    
     function minus(e) { 
         // Add the code for the minus function 
       e.preventDefault();
-      setResult((result)=>result-Number(inputRef.current.value))
+      setResult((result)=>result+"-"+Number(inputRef.current.value))
+      inputRef.current.value="" 
     };
    
     function times(e) { 
       // Add the code for the plus function
       e.preventDefault();
-      setResult((result)=>result*Number(inputRef.current.value))
+      setResult((result)=>result+"*"+Number(inputRef.current.value))
+      inputRef.current.value="" 
     }; 
    
     function divide(e) { 
       // Add the code for the divide function 
       e.preventDefault();
-      let x=Number(inputRef.current.value)
-      setResult((result)=>(x==0)?0:result/x)
+      if(inputRef.current.value===0)
+        inputRef.current.value="Cannot divide by zero"
+      else
+        setResult((result)=>result+"/"+Number(inputRef.current.value))
+      inputRef.current.value="" 
     };
    
     function resetInput(e) { 
       // Add the code for the resetInput function 
       e.preventDefault()
-      inputRef.current.value=0
+      inputRef.current.value=""
     }; 
    
-    function resetResult(e) { 
+    function resetAll(e) { 
         // Add the code for the resetResult function 
       e.preventDefault()
-      setResult(0)
+      inputRef.current.value=""
+      setResult("")
     };
     
-    
-    function one(e) {
-      e.preventDefault()
-      inputRef.current.value+=1
-    }
-    
-    function two(e) {
-      e.preventDefault()
-      inputRef.current.value+=2
-    }
-    
-    function three(e) {
-      e.preventDefault()
-      inputRef.current.value+=3
-    }
-    
-    function four(e) {
-      e.preventDefault()
-      inputRef.current.value+=4
-    }
-    
-    function five(e) {
-      e.preventDefault()
-      inputRef.current.value+=5
-    }
-    
-    function six(e) {
-      e.preventDefault()
-      inputRef.current.value+=6
-    }
-  
-    function seven(e) {
-      e.preventDefault()
-      inputRef.current.value+=7
-    }
-  
-    function eight(e) {
-      e.preventDefault()
-      inputRef.current.value+=8
-    }
-  
-    function nine(e) {
-      e.preventDefault()
-      inputRef.current.value+=9
-    }
-  
-    function zero(e) {
-      e.preventDefault()
-      inputRef.current.value+=0
-    }
     function alternate(e) {
-      e.preventDefault()
-      inputRef.current.value*=-1
-    //   if(Number(inputRef.current.value)>0)
-    //     inputRef.current.value*=-1
-    //   else
-    
+        e.preventDefault()
+        inputRef.current.value*=-1
     }
+
     function point(e) {
-      e.preventDefault()
-      inputRef.current.value+="."
+        e.preventDefault()
+        if(!inputRef.current.value.includes('.'))
+            inputRef.current.value+='.'
     }
+
     function equal(e) {
-      e.preventDefault()
-      
+        e.preventDefault()
+        try{
+            const evalResult=evaluate(result+inputRef.current.value);
+            setResult(evalResult)
+            inputRef.current.value=""
+        }
+        catch(error){
+            alert("Invalid Calculation")
+        }
     }
-   
+    
+    function one(e) {e.preventDefault();inputRef.current.value+=1}
+    function two(e) {e.preventDefault();inputRef.current.value+=2}
+    function three(e) {e.preventDefault();inputRef.current.value+=3}
+    function four(e) {e.preventDefault();inputRef.current.value+=4}
+    function five(e) {e.preventDefault();inputRef.current.value+=5}
+    function six(e) {e.preventDefault();inputRef.current.value+=6}
+    function seven(e) {e.preventDefault();inputRef.current.value+=7}
+    function eight(e) {e.preventDefault();inputRef.current.value+=8}
+    function nine(e) {e.preventDefault();inputRef.current.value+=9}
+    function zero(e) {e.preventDefault();inputRef.current.value+=0}
+       
     return ( 
       <div className="App"> 
         <div> 
@@ -121,15 +140,14 @@ import {
           <p ref={resultRef}> 
             {result}
           </p> 
-          <input
-            pattern="[0-9]" 
+          <input 
             ref={inputRef} 
-            type="number" 
+            type="text" 
             placeholder="Type a number" 
           /> 
           <div className=" Btn Row">
             <button onClick={resetInput}>CE</button> 
-            <button onClick={resetResult}>del</button>
+            <button onClick={resetAll}>C</button>
             <button onClick={divide}>%</button>   
             <button onClick={divide}>/</button>   
           </div>
@@ -137,7 +155,7 @@ import {
             <button onClick={seven}>7</button>
             <button onClick={eight}>8</button>
             <button onClick={nine}>9</button>
-            <button onClick={times}>*</button>
+            <button onClick={times}>X</button>
           </div>
           <div className=" Btn Row">
             <button onClick={four}>4</button>
