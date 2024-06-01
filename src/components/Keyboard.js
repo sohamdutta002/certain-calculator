@@ -38,7 +38,7 @@ export default function Keyboard({inputRef,setResult,result}){
                 point(event,inputRef)
             else if(event.key==='Backspace')
                 bckspc(event,inputRef)
-            else if(event.key==='delete')
+            else if(event.key==='Delete')
               resetAll(event,inputRef,setResult)
         }
         document.addEventListener('keydown', handleKeyDown);
