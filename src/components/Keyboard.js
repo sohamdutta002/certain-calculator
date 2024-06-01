@@ -7,11 +7,11 @@ import resetAll from "./Reset"
 import equal from "./Equal"
 
 
-export default function Keyboard({inputRef,setResult}){
+export default function Keyboard({inputRef,setResult,result}){
     useEffect(() => {
         function handleKeyDown(event) {
             if (event.key === 'Enter')
-                equal(event,inputRef,setResult);
+                equal(event,inputRef,setResult,result);
             else if(event.key>='0'&&event.key<='9')
                 appendDigit(event,event.key,inputRef);
             else if(event.key==='+'){
@@ -45,5 +45,5 @@ export default function Keyboard({inputRef,setResult}){
         return () => {
           document.removeEventListener('keydown', handleKeyDown);
         };
-      }, []);
+      }, [inputRef,setResult,result]);
 }
