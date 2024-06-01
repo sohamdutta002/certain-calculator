@@ -8,7 +8,7 @@ import {
   function App() { 
     const inputRef = useRef(null); 
     const resultRef = useRef(null); 
-    const [result, setResult] = useState(0); 
+    const [result, setResult] = useState(''); 
    
     
   useEffect(() => {
@@ -41,10 +41,17 @@ import {
         inputRef.current.value+=digit;    
     }
 
+    function handleClick(e){
+      const val=parseFloat(e.target.value);
+      switch(val){
+        case "+":{
+            setResult(inputRef.current.value)
+        }
+      }
+    }
     function plus(e) { 
         e.preventDefault();
-        setResult(inputRef.current.value+"+");
-        inputRef.current.value="" 
+        setResult(inputRef.current.value++)
     }; 
    
     function minus(e) { 
@@ -81,6 +88,7 @@ import {
         e.preventDefault()
         inputRef.current.value=inputRef.current.value.slice(0,-1)
     }
+
     function alternate(e) {
         e.preventDefault()
         inputRef.current.value*=-1
@@ -95,9 +103,11 @@ import {
     function equal(e) {
         e.preventDefault()
         try{
-            const evalResult=evaluate(inputRef.current.value);
-            setResult(String(evalResult))
+            const evalResult=evaluate(2+inputRef.current.value);
+            console.log(String(evalResult))
+            setResult(0)
             inputRef.current.value=""
+            
         }
         catch(error){
             alert("Invalid Calculation")
