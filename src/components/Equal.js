@@ -14,6 +14,7 @@ export default function equal(e,inputRef,setResult,result) {
         inputRef.current.value=""
     }
     catch(error){
-        alert("Invalid Calculation")
+        inputRef.current.value="ERR"
+        setTimeout(()=>{inputRef.current.value=""},800)
     }
 }

@@ -1,24 +1,16 @@
 import React,{useState,useRef} from "react"; 
-  import "./App.css";
+import "./App.css";
 import Buttons from './components/Buttons';
 import Keyboard from "./components/Keyboard";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import ToggleButton from "./components/ToggleButton"
   function App() { 
     const inputRef = useRef(null); 
     const [result, setResult] = useState(); 
-    const [darkMode,setDarkMode]=useState(null);
-
-    function toggleMode(){
-      setDarkMode(!darkMode);
-      document.body.classList.toggle('dark-mode');
-    }
-
+    const [darkMode,setDarkMode]=useState(false);
+    
     return ( 
       <div className="App">
-        <button onClick={toggleMode} className="dark-mode-toggle">
-            <FontAwesomeIcon icon={darkMode?faSun:faMoon} />
-        </button> 
+        <ToggleButton darkMode={darkMode} setDarkMode={setDarkMode}/>
         <form> 
           <p id="result"> 
             {result}
