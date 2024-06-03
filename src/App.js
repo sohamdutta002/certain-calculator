@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+import React,{useState,useRef} from "react"; 
+import "./App.css";
+import Buttons from './components/Buttons';
+import Keyboard from "./components/Keyboard";
+import ToggleButton from "./components/ToggleButton"
+  function App() { 
+    const inputRef = useRef(null); 
+    const [result, setResult] = useState(); 
+    const [darkMode,setDarkMode]=useState(false);
+    
+    return ( 
+      <div className="App">
+        <ToggleButton darkMode={darkMode} setDarkMode={setDarkMode}/>
+        <form> 
+          <p id="result"> 
+            {result}
+          </p> 
+          <input 
+            ref={inputRef} 
+            type="text"  inputMode='decimal'
+            placeholder="0" 
+            readOnly
+          /> 
+          <Buttons inputRef={inputRef} setResult={setResult} result={result}/>
+        </form>
+        <Keyboard inputRef={inputRef} setResult={setResult} result={result}/> 
+      </div> 
+    ); 
+  } 
+   
+  export default App; 
+  
