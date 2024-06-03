@@ -1,5 +1,5 @@
 export default function handleClick(e,inputRef){
-  e.preventDefault()
+  if(e&&e.preventDefault())  e.preventDefault()
   const val=e.target.value;
   switch(val){
     case "+":

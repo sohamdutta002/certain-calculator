@@ -4,9 +4,9 @@
   --button-background: whitesmoke;
 }
 body.dark-mode{
-  --background-color: #333;
+  --background-color: #222;
   --text-color: #fff;
-  --button-background: #222;
+  --button-background: #111111fa;
 }
 * {
   font-family: sans-serif;

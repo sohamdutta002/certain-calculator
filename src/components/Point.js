@@ -1,5 +1,5 @@
 export default function point(e,inputRef) {
-    e.preventDefault()
+    if(e&&e.preventDefault())    e.preventDefault()
     if(!inputRef.current.value.includes('.'))
         inputRef.current.value+='.'
 }

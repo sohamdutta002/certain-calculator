@@ -1,4 +1,4 @@
 export default function bckspc(e,inputRef){
-    e.preventDefault()
+    if(e&&e.preventDefault())   e.preventDefault()
     inputRef.current.value=inputRef.current.value.slice(0,-1)
 }
