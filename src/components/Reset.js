@@ -1,5 +1,5 @@
 export default function resetAll(e,inputRef,setResult) { 
-    e.preventDefault()
+    if(e&&e.preventDefault)    e.preventDefault()
     inputRef.current.value=""
     setResult("")
 };

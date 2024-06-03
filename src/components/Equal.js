@@ -1,6 +1,6 @@
 import {evaluate} from 'mathjs';
 export default function equal(e,inputRef,setResult,result) {
-    e.preventDefault()
+    if(e&&e.preventDefault())    e.preventDefault()
     try{
         let evalResult;
         if(isNaN(inputRef.current.value.charAt(0))){
