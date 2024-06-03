@@ -1,6 +1,12 @@
-# Certain Calculator
+<div style="display:flex; align-items:center;justify-content:center;height:100vh">
+    <img src="./public/logo128.png" alt="logo" />
+    <h1 style="margin-top:20px;">Certain Calculator
+</div>
 
-Welcome to the Certain Calculator project! 
+<!-- # ![Logo](./public/logo128.png)Certain Calculator -->
+
+---
+<div style="font-size:30px;margin-bottom:80px;"><b>Welcome to the Certain Calculator project!</b></div> 
 
 ## Table of Contents
 - [Available Scripts](#available-scripts)
