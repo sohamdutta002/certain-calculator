@@ -1,7 +1,7 @@
 {
   "name": "calculator",
   "version": "0.1.0",
-  "private": false,
+  "private": true,
   "homepage": "https://github.com/sohamduck/certain-calculator",
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
