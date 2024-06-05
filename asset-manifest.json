@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/sohamduck/certain-calculator/static/css/main.5668cb0d.css",
-    "main.js": "/sohamduck/certain-calculator/static/js/main.9cf872ce.js",
-    "index.html": "/sohamduck/certain-calculator/index.html",
-    "main.5668cb0d.css.map": "/sohamduck/certain-calculator/static/css/main.5668cb0d.css.map",
-    "main.9cf872ce.js.map": "/sohamduck/certain-calculator/static/js/main.9cf872ce.js.map"
+    "main.css": "/certain-calculator/static/css/main.5668cb0d.css",
+    "main.js": "/certain-calculator/static/js/main.9cf872ce.js",
+    "index.html": "/certain-calculator/index.html",
+    "main.5668cb0d.css.map": "/certain-calculator/static/css/main.5668cb0d.css.map",
+    "main.9cf872ce.js.map": "/certain-calculator/static/js/main.9cf872ce.js.map"
   },
   "entrypoints": [
     "static/css/main.5668cb0d.css",
